@@ -10,7 +10,7 @@
 <style>
 :root{
   --bg:#07070c;
-  --card:#11111a;
+  --card:#12121b;
   --stroke:#1f1f2e;
   --text:#eaeaf5;
   --muted:#9a9ab3;
@@ -19,6 +19,7 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
   font-family:'Space Grotesk',sans-serif;
   background:var(--bg);
@@ -26,7 +27,7 @@ body{
   overflow-x:hidden;
 }
 
-/* BACKGROUND GLOW */
+/* BACKGROUND */
 body::before{
   content:"";
   position:fixed;
@@ -36,16 +37,17 @@ body::before{
   height:600px;
   background:radial-gradient(circle,var(--glow),transparent 60%);
   filter:blur(40px);
+  z-index:-1;
 }
 
 /* NAV */
 nav{
   position:fixed;
-  top:0;
   width:100%;
+  top:0;
   display:flex;
   justify-content:space-between;
-  padding:20px 40px;
+  padding:18px 40px;
   background:rgba(10,10,15,.6);
   backdrop-filter:blur(14px);
   border-bottom:1px solid var(--stroke);
@@ -54,15 +56,14 @@ nav{
 
 .logo{
   font-weight:600;
-  letter-spacing:.08em;
   color:#c4b5fd;
+  letter-spacing:.08em;
 }
 
 nav a{
   color:var(--muted);
   text-decoration:none;
-  margin-left:24px;
-  transition:.2s;
+  margin-left:20px;
 }
 nav a:hover{color:#fff}
 
@@ -70,8 +71,8 @@ nav a:hover{color:#fff}
 .hero{
   min-height:100vh;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   text-align:center;
   padding:120px 20px 60px;
 }
@@ -93,37 +94,6 @@ nav a:hover{color:#fff}
   max-width:600px;
 }
 
-/* BUTTONS */
-.btns{
-  margin-top:30px;
-  display:flex;
-  gap:15px;
-  justify-content:center;
-}
-
-.btn{
-  padding:12px 22px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:500;
-  transition:.2s;
-}
-
-.primary{
-  background:var(--accent);
-  color:white;
-}
-.primary:hover{transform:translateY(-3px)}
-
-.secondary{
-  border:1px solid var(--stroke);
-  color:var(--text);
-}
-.secondary:hover{
-  border-color:var(--accent);
-  transform:translateY(-3px);
-}
-
 /* SECTIONS */
 section{
   padding:80px 20px;
@@ -132,39 +102,42 @@ section{
 }
 
 h2{
-  font-size:28px;
   margin-bottom:30px;
+  font-size:28px;
 }
 
-/* PROJECTS */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:20px;
 }
 
+/* CARD CLICKABLE */
 .card{
   background:linear-gradient(145deg,var(--card),#0c0c12);
   border:1px solid var(--stroke);
   padding:22px;
   border-radius:16px;
-  transition:.3s;
+  cursor:pointer;
+  transition:.25s;
   position:relative;
   overflow:hidden;
-}
-
-.card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at top left,var(--glow),transparent 50%);
-  opacity:0;
-  transition:.3s;
 }
 
 .card:hover{
   transform:translateY(-6px);
   border-color:var(--accent);
+}
+
+/* glow hover */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top left,var(--glow),transparent 60%);
+  opacity:0;
+  transition:.25s;
 }
 
 .card:hover::before{
@@ -187,28 +160,19 @@ h2{
   color:#c4b5fd;
 }
 
-/* LINKS */
-.links{
-  margin-top:16px;
-  display:flex;
-  gap:12px;
-}
-
-.links a{
-  font-size:13px;
-  color:var(--muted);
-  text-decoration:none;
-}
-.links a:hover{color:#fff}
-
 /* CONTACT */
 .contact{
   text-align:center;
 }
 
-.contact p{
-  color:var(--muted);
-  margin-bottom:20px;
+.btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 20px;
+  border-radius:10px;
+  background:var(--accent);
+  color:white;
+  text-decoration:none;
 }
 
 footer{
@@ -234,67 +198,58 @@ footer{
 <div class="hero">
   <div>
     <h1>Edson Junior<br><span>Front End Developer</span></h1>
-    <p>Crio interfaces modernas, rápidas e funcionais com foco em experiência e performance.</p>
-
-    <div class="btns">
-      <a class="btn primary" href="#projetos">Ver projetos</a>
-      <a class="btn secondary" href="#contato">Contato</a>
-    </div>
+    <p>Crio interfaces modernas, rápidas e funcionais com foco em experiência do usuário.</p>
   </div>
 </div>
 
 <!-- PROJETOS -->
 <section id="projetos">
-  <h2>Projetos</h2>
+<h2>Projetos</h2>
 
-  <div class="grid">
+<div class="grid">
 
-    <div class="card">
-      <h3>Network Monitor</h3>
-      <p>Dashboard de monitoramento de servidores com status e resposta em tempo real.</p>
-      <div class="tags">Python • Flask • Web</div>
-      <div class="links">
-        <a href="https://edsonsilvajr08.github.io/network-monitor/" target="_blank">Live</a>
-        <a href="https://github.com/EdsonSilvaJr08/network-monitor" target="_blank">Code</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Weather App</h3>
-      <p>App de clima com API OpenWeatherMap e busca por cidade.</p>
-      <div class="tags">JS • API • Frontend</div>
-      <div class="links">
-        <a href="https://edsonsilvajr08.github.io/weather-app/" target="_blank">Live</a>
-        <a href="https://github.com/EdsonSilvaJr08" target="_blank">Code</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>To-Do List</h3>
-      <p>Lista de tarefas com localStorage e gerenciamento completo.</p>
-      <div class="tags">JS • HTML • CSS</div>
-      <div class="links">
-        <a href="https://edsonsilvajr08.github.io/To-do-list/" target="_blank">Live</a>
-        <a href="https://github.com/EdsonSilvaJr08" target="_blank">Code</a>
-      </div>
-    </div>
-
+  <div class="card" onclick="window.open('https://edsonsilvajr08.github.io/network-monitor/','_blank')">
+    <h3>Network Monitor</h3>
+    <p>Monitoramento em tempo real de sites com status e resposta.</p>
+    <div class="tags">HTML • CSS • JS • Python</div>
   </div>
+
+  <div class="card" onclick="window.open('https://edsonsilvajr08.github.io/weather-app/','_blank')">
+    <h3>Weather App</h3>
+    <p>Consulta de clima em tempo real usando API externa.</p>
+    <div class="tags">JavaScript • API • Front-end</div>
+  </div>
+
+  <div class="card" onclick="window.open('https://edsonsilvajr08.github.io/To-do-list/','_blank')">
+    <h3>To-Do List</h3>
+    <p>Gerenciador de tarefas com localStorage.</p>
+    <div class="tags">JS • HTML • CSS</div>
+  </div>
+
+</div>
 </section>
 
 <!-- CONTATO -->
 <section id="contato" class="contact">
-  <h2>Contato</h2>
-  <p>Aberto a oportunidades de Front-End / Trainee</p>
+<h2>Contato</h2>
 
-  <div class="btns">
-    <a class="btn primary" target="_blank" href="https://www.linkedin.com/in/edson-junior-aab944269/">LinkedIn</a>
-    <a class="btn secondary" target="_blank" href="https://github.com/EdsonSilvaJr08">GitHub</a>
-  </div>
+<p style="color:var(--muted)">
+Disponível para oportunidades Front-End / Trainee
+</p>
+
+<a class="btn" target="_blank"
+href="https://www.linkedin.com/in/edson-junior-aab944269/">
+LinkedIn
+</a>
+
+<a class="btn" target="_blank"
+href="https://github.com/EdsonSilvaJr08">
+GitHub
+</a>
 </section>
 
 <footer>
-  © 2026 Edson Junior — Front End Developer
+© 2026 Edson Junior — Front End Developer
 </footer>
 
 </body>
