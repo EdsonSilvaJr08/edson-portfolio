@@ -16,4 +16,4 @@ Portfólio pessoal de desenvolvedor Front-End com foco em interfaces modernas e 
 - Git & GitHub Pages
 
 ### 🌐 Live
-https://edsonsilvajr08.github.io/portfolio
+https://edsonsilvajr08.github.io/edson-portfolio/
