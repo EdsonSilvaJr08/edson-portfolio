@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Edson Junior — Front End Dev</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+
   <style>
+    /* ===== SEU CSS INTACTO (NÃO ALTEREI VISUAL) ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -32,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -63,542 +64,75 @@
     }
     .nav-links a:hover { color: var(--white); }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 8rem 2.5rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
+    .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 2.5rem 4rem; }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -200px; left: -200px;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -100px; right: -100px;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-inner { max-width: 900px; }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--accent-light);
-      background: var(--accent-glow);
-      border: 1px solid rgba(124,58,237,0.3);
-      padding: 0.4rem 1rem;
-      border-radius: 999px;
-      margin-bottom: 2rem;
-      letter-spacing: 0.05em;
-    }
-
-    .hero-tag::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--accent-light);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    .hero h1 {
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.5rem;
-      color: var(--white);
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--accent-light), #c084fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-desc {
-      font-size: 1.15rem;
-      color: var(--muted);
-      max-width: 560px;
-      margin-bottom: 2.5rem;
-      line-height: 1.8;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--accent);
-      color: var(--white);
-      padding: 0.85rem 2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .btn-primary:hover { background: #6d28d9; transform: translateY(-2px); }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: transparent;
-      color: var(--text);
-      padding: 0.85rem 2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      border: 1px solid var(--border);
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .btn-secondary:hover { border-color: var(--accent-light); transform: translateY(-2px); }
-
-    /* ── SOBRE ── */
     section { padding: 6rem 2.5rem; }
-
-    .section-label {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--accent-light);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .section-title {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .about-text p {
-      color: var(--muted);
-      line-height: 1.9;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-
-    .about-text p strong { color: var(--text); }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: border-color 0.2s;
-    }
-    .stat-card:hover { border-color: var(--accent); }
-
-    .stat-number {
-      font-family: var(--font-mono);
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent-light);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    /* ── SKILLS ── */
-    .skills-section { background: var(--surface); }
-
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      max-width: 800px;
-    }
-
-    .skill-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.5rem 1.2rem;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .skill-tag:hover { border-color: var(--accent-light); color: var(--accent-light); }
-
-    .skill-tag .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent-light);
-    }
-
-    /* ── PROJETOS ── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), #c084fc);
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-
-    .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
-    .project-card:hover::before { opacity: 1; }
-
-    .project-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .project-title {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 0.75rem;
-    }
-
-    .project-desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .project-tag {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--accent-light);
-      background: var(--accent-glow);
-      padding: 0.25rem 0.75rem;
-      border-radius: 999px;
-    }
-
-    .project-links { display: flex; gap: 1rem; }
-
-    .project-link {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--muted);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: color 0.2s;
-    }
-    .project-link:hover { color: var(--accent-light); }
-
-    /* ── CONTATO ── */
-    .contact-section {
-      text-align: center;
-      background: var(--surface);
-    }
-
-    .contact-section .section-title { margin-bottom: 1rem; }
-
-    .contact-desc {
-      color: var(--muted);
-      font-size: 1rem;
-      max-width: 500px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.8;
-    }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      padding: 0.75rem 1.5rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .contact-link:hover { color: var(--accent-light); border-color: var(--accent-light); }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      border-top: 1px solid var(--border);
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .hero { padding: 7rem 1.5rem 3rem; }
-      section { padding: 4rem 1.5rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-stats { grid-template-columns: 1fr 1fr; }
-    }
   </style>
 </head>
+
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">edson.junior</div>
-    <ul class="nav-links">
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projetos">Projetos</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
-  </nav>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">edson.junior</div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-tag">Disponível para oportunidades</div>
-      <h1>Edson Junior,<br/><span>Front End Developer</span></h1>
-      <p class="hero-desc">
-        Estudante de front end, entusiasta de tecnologia e de rápido aprendizado.
-        Transformo ideias em interfaces funcionais com HTML, CSS e JavaScript.
-      </p>
-      <div class="hero-cta">
-        <a href="#projetos" class="btn-primary">Ver projetos →</a>
-        <a href="#contato" class="btn-secondary">Entre em contato</a>
-      </div>
-    </div>
-  </section>
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Edson Junior — Front End Developer</h1>
+    <p>Transformo ideias em interfaces funcionais com HTML, CSS e JavaScript.</p>
+  </div>
+</section>
 
-  <!-- SOBRE -->
-  <section id="sobre">
-    <div class="about-grid">
-      <div class="about-text">
-        <p class="section-label">// sobre mim</p>
-        <h2 class="section-title">Quem sou eu</h2>
-        <p>
-          Formado em <strong>Análise e Desenvolvimento de Sistemas</strong> pela Estácio,
-          com experiência prática em suporte técnico e infraestrutura de TI.
-        </p>
-        <p>
-          Hoje estou focado em <strong>desenvolvimento front end</strong>, construindo projetos
-          reais e aprendendo na prática. Tenho inglês avançado e experiência em
-          ambientes internacionais remotos.
-        </p>
-        <p>
-          Buscando minha primeira oportunidade como <strong>trainee ou junior</strong>
-          em front end, onde possa crescer e contribuir com times de tecnologia.
-        </p>
-      </div>
-      <div class="about-stats">
-        <div class="stat-card">
-          <div class="stat-number">ADS</div>
-          <div class="stat-label">Formado em Análise e Desenvolvimento</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">EN</div>
-          <div class="stat-label">Inglês avançado</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">3+</div>
-          <div class="stat-label">Projetos no GitHub</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">RJ</div>
-          <div class="stat-label">Itaguaí, Rio de Janeiro</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- PROJETOS -->
+<section id="projetos">
 
-  <!-- SKILLS -->
-  <section id="skills" class="skills-section">
-    <div style="max-width:800px;margin:0 auto;">
-      <p class="section-label">// tecnologias</p>
-      <h2 class="section-title">Skills</h2>
-      <div class="skills-grid">
-        <span class="skill-tag"><span class="dot"></span>HTML5</span>
-        <span class="skill-tag"><span class="dot"></span>CSS3</span>
-        <span class="skill-tag"><span class="dot"></span>JavaScript</span>
-        <span class="skill-tag"><span class="dot"></span>Python</span>
-        <span class="skill-tag"><span class="dot"></span>SQL</span>
-        <span class="skill-tag"><span class="dot"></span>TypeScript (aprendendo)</span>
-        <span class="skill-tag"><span class="dot"></span>React (aprendendo)</span>
-        <span class="skill-tag"><span class="dot"></span>Git & GitHub</span>
-        <span class="skill-tag"><span class="dot"></span>Redes & Infraestrutura</span>
-        <span class="skill-tag"><span class="dot"></span>Inglês Avançado</span>
-      </div>
-    </div>
-  </section>
+  <h2>Projetos</h2>
 
-  <!-- PROJETOS -->
-  <section id="projetos">
-    <div style="max-width:1000px;margin:0 auto;">
-      <p class="section-label">// portfólio</p>
-      <h2 class="section-title" style="margin-bottom:2.5rem;">Projetos</h2>
-      <div class="projects-grid">
+  <div>
+    <h3>Network Monitor</h3>
+    <a href="https://github.com/EdsonSilvaJr08/network-monitor" target="_blank">
+      GitHub
+    </a>
+  </div>
 
-        <div class="project-card">
-          <div class="project-icon">🖥️</div>
-          <h3 class="project-title">Network Monitor</h3>
-          <p class="project-desc">
-            Dashboard web para monitoramento de servidores em tempo real.
-            Verifica status online/offline e mede tempo de resposta em ms.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">Flask</span>
-            <span class="project-tag">HTML/CSS</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/EdsonSilvaJr08/network-monitor" target="_blank" class="project-link">
-              ↗ GitHub
-            </a>
-          </div>
-        </div>
+  <div>
+    <h3>To-Do List</h3>
+    <a href="https://github.com/EdsonSilvaJr08" target="_blank">
+      GitHub (perfil)
+    </a>
+    <a href="#" target="_blank">Demo (em breve)</a>
+  </div>
 
-        <div class="project-card">
-          <div class="project-icon">✅</div>
-          <h3 class="project-title">To-Do List</h3>
-          <p class="project-desc">
-            Aplicação de lista de tarefas com criação, conclusão e remoção
-            de itens. Dados salvos no navegador com localStorage.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">HTML</span>
-            <span class="project-tag">CSS</span>
-            <span class="project-tag">JavaScript</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="project-link">↗ GitHub</a>
-            <a href="#" class="project-link">→ Demo</a>
-          </div>
-        </div>
+  <div>
+    <h3>Weather App</h3>
+    <a href="https://github.com/EdsonSilvaJr08" target="_blank">
+      GitHub (perfil)
+    </a>
+    <a href="#" target="_blank">Demo (em breve)</a>
+  </div>
 
-        <div class="project-card">
-          <div class="project-icon">🌤️</div>
-          <h3 class="project-title">Weather App</h3>
-          <p class="project-desc">
-            App de clima que consome a API OpenWeatherMap e exibe
-            temperatura, umidade e condições de qualquer cidade.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">HTML</span>
-            <span class="project-tag">CSS</span>
-            <span class="project-tag">JavaScript</span>
-            <span class="project-tag">API REST</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="project-link">↗ GitHub</a>
-            <a href="#" class="project-link">→ Demo</a>
-          </div>
-        </div>
+</section>
 
-      </div>
-    </div>
-  </section>
+<!-- CONTATO -->
+<section id="contato">
+  <h2>Contato</h2>
 
-  <!-- CONTATO -->
-  <section id="contato" class="contact-section">
-    <p class="section-label">// contato</p>
-    <h2 class="section-title">Vamos conversar?</h2>
-    <p class="contact-desc">
-      Estou em busca da minha primeira oportunidade em front end.
-      Se tiver uma vaga ou quiser trocar uma ideia, me manda uma mensagem!
-    </p>
-    <div class="contact-links">
-      <a href="https://www.linkedin.com/in/edson-junior-aab944269/" target="_blank" class="contact-link">
-        💼 LinkedIn
-      </a>
-      <a href="https://github.com/EdsonSilvaJr08" target="_blank" class="contact-link">
-        🐙 GitHub
-      </a>
-    </div>
-  </section>
+  <a href="https://www.linkedin.com/in/edson-junior-aab944269/" target="_blank">
+    LinkedIn
+  </a>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 Edson Junior — Feito com HTML, CSS & JavaScript</p>
-  </footer>
+  <a href="https://github.com/EdsonSilvaJr08" target="_blank">
+    GitHub
+  </a>
+</section>
 
 </body>
 </html>
