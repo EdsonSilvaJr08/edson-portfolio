@@ -18,16 +18,19 @@
   --glow:rgba(139,92,246,.25);
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
   font-family:'Space Grotesk',sans-serif;
   background:var(--bg);
   color:var(--text);
-  overflow-x:hidden;
 }
 
-/* BACKGROUND */
+/* BACKGROUND GLOW */
 body::before{
   content:"";
   position:fixed;
@@ -36,28 +39,26 @@ body::before{
   width:600px;
   height:600px;
   background:radial-gradient(circle,var(--glow),transparent 60%);
-  filter:blur(40px);
+  filter:blur(50px);
   z-index:-1;
 }
 
 /* NAV */
 nav{
   position:fixed;
-  width:100%;
   top:0;
+  width:100%;
   display:flex;
   justify-content:space-between;
   padding:18px 40px;
   background:rgba(10,10,15,.6);
   backdrop-filter:blur(14px);
   border-bottom:1px solid var(--stroke);
-  z-index:10;
 }
 
 .logo{
-  font-weight:600;
   color:#c4b5fd;
-  letter-spacing:.08em;
+  font-weight:600;
 }
 
 nav a{
@@ -65,20 +66,23 @@ nav a{
   text-decoration:none;
   margin-left:20px;
 }
-nav a:hover{color:#fff}
+
+nav a:hover{
+  color:white;
+}
 
 /* HERO */
 .hero{
   min-height:100vh;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   text-align:center;
-  padding:120px 20px 60px;
+  padding:120px 20px;
 }
 
 .hero h1{
-  font-size:clamp(2.5rem,5vw,4.5rem);
+  font-size:clamp(2.5rem,5vw,4rem);
   line-height:1.1;
 }
 
@@ -92,18 +96,18 @@ nav a:hover{color:#fff}
   margin-top:20px;
   color:var(--muted);
   max-width:600px;
+  margin-inline:auto;
 }
 
-/* SECTIONS */
+/* SEÇÃO */
 section{
-  padding:80px 20px;
   max-width:1100px;
   margin:auto;
+  padding:80px 20px;
 }
 
 h2{
   margin-bottom:30px;
-  font-size:28px;
 }
 
 /* GRID */
@@ -113,35 +117,23 @@ h2{
   gap:20px;
 }
 
-/* CARD CLICKABLE */
+/* CARD AGORA É LINK REAL */
 .card{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+
   background:linear-gradient(145deg,var(--card),#0c0c12);
   border:1px solid var(--stroke);
   padding:22px;
   border-radius:16px;
-  cursor:pointer;
+
   transition:.25s;
-  position:relative;
-  overflow:hidden;
 }
 
 .card:hover{
   transform:translateY(-6px);
   border-color:var(--accent);
-}
-
-/* glow hover */
-.card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at top left,var(--glow),transparent 60%);
-  opacity:0;
-  transition:.25s;
-}
-
-.card:hover::before{
-  opacity:1;
 }
 
 .card h3{
@@ -160,14 +152,14 @@ h2{
   color:#c4b5fd;
 }
 
-/* CONTACT */
+/* CONTATO */
 .contact{
   text-align:center;
 }
 
 .btn{
   display:inline-block;
-  margin-top:15px;
+  margin:10px;
   padding:12px 20px;
   border-radius:10px;
   background:var(--accent);
@@ -175,6 +167,7 @@ h2{
   text-decoration:none;
 }
 
+/* FOOTER */
 footer{
   text-align:center;
   padding:40px;
@@ -198,7 +191,7 @@ footer{
 <div class="hero">
   <div>
     <h1>Edson Junior<br><span>Front End Developer</span></h1>
-    <p>Crio interfaces modernas, rápidas e funcionais com foco em experiência do usuário.</p>
+    <p>Crio interfaces modernas, rápidas e funcionais com HTML, CSS e JavaScript.</p>
   </div>
 </div>
 
@@ -208,23 +201,23 @@ footer{
 
 <div class="grid">
 
-  <div class="card" onclick="window.open('https://edsonsilvajr08.github.io/network-monitor/','_blank')">
+  <a class="card" href="https://edsonsilvajr08.github.io/network-monitor/" target="_blank" rel="noopener noreferrer">
     <h3>Network Monitor</h3>
-    <p>Monitoramento em tempo real de sites com status e resposta.</p>
+    <p>Monitoramento de sites com status online/offline e tempo de resposta.</p>
     <div class="tags">HTML • CSS • JS • Python</div>
-  </div>
+  </a>
 
-  <div class="card" onclick="window.open('https://edsonsilvajr08.github.io/weather-app/','_blank')">
+  <a class="card" href="https://edsonsilvajr08.github.io/weather-app/" target="_blank" rel="noopener noreferrer">
     <h3>Weather App</h3>
     <p>Consulta de clima em tempo real usando API externa.</p>
-    <div class="tags">JavaScript • API • Front-end</div>
-  </div>
+    <div class="tags">JavaScript • API</div>
+  </a>
 
-  <div class="card" onclick="window.open('https://edsonsilvajr08.github.io/To-do-list/','_blank')">
+  <a class="card" href="https://edsonsilvajr08.github.io/To-do-list/" target="_blank" rel="noopener noreferrer">
     <h3>To-Do List</h3>
-    <p>Gerenciador de tarefas com localStorage.</p>
-    <div class="tags">JS • HTML • CSS</div>
-  </div>
+    <p>Gerenciador de tarefas com armazenamento local (localStorage).</p>
+    <div class="tags">HTML • CSS • JS</div>
+  </a>
 
 </div>
 </section>
@@ -232,10 +225,6 @@ footer{
 <!-- CONTATO -->
 <section id="contato" class="contact">
 <h2>Contato</h2>
-
-<p style="color:var(--muted)">
-Disponível para oportunidades Front-End / Trainee
-</p>
 
 <a class="btn" target="_blank"
 href="https://www.linkedin.com/in/edson-junior-aab944269/">
